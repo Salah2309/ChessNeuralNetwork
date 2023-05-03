@@ -6,4 +6,4 @@ A Neural Network that calculates every possible move by a player in a chess game
 > A multi-dimensional char array of 8x8 will represent the chess board, K-king, Q-queen, B-bishop, R-rook, N-knight, P-pawn.
 > 
 > **Game:**
-> The Neural Network is created in a tree structure with each node representing a position on a chess board. The head will be the begining of the game, the number of children is the number of possible moves in node's possition. 
+> The Neural Network is created in a tree structure with each node representing a position on a chess board. The node head will be the begining of the game, the number of the node's children is the number of the possible moves in current node's possition. 
