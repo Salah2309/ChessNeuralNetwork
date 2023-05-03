@@ -1,8 +1,9 @@
 # ChessNeuralNetwork #
 
-## A Neural Network that calculates every possible move by a player in a chess game, as well as every possible move made by the opponent. This is not limited to one move but rather every move in a game by both parties. 
+> A Neural Network that calculates every possible move by a player in a chess game, as well as every possible move made by the opponent. This is not limited to one move but rather every move in a game by both parties. 
 
 **Database:**
+
 A multi-dimensional array of 8x8 will represent the chess board, K-king, Q-queen, B-bishop, R-rook, N-knight, P-pawn.
 
 **Network:**
