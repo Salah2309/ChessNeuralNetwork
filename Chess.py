@@ -1,34 +1,46 @@
 
 class Tree:
-    def __init__(self):
-        self.position = [[8]*8]
+    def __init__(self, data, layer):
+        self.data = data
+        self.layer = layer
         self.children = []
 
-    def add_child(self, node):
-        assert isinstance(node, Tree)
-        self.children.append(node)
+    def addChild(self, data):
+        self.children.append(Tree(data, self.layer + 1))
 
     def print(self):
-        for row in self.position:
+        for row in self.data:
             for item in row:
                 print(f'{item:3}', end=' ')
             print()
-            
-    def NumPossibleMoves(self, color):
-        inCheck(self.position, "w")
-        
 
+    def printChildren(self):
+        for i in range(len(self.children)):
+            print("child: " +str(i))
+            self.children[i].print()
+            print()
+            
+    def printAll(self):
+        #this is a pre-order print
+        if self:
+            self.print()
+            for child in self.children:
+                child.printAll()
+        else:
+            return
 
 # Helper Functions: # 
 
-def inCheck(position, color):
-    king = color + 'k'
-    if(not itemExisting(position, king)):
-        raise Exception("Check on King's existance OR Color Passed to inCheck Function")
-    else:
-        # in check deal with here
-        pass
+def correctData(data):
+    if data and len(data) == 8:
+        for i in data:
+            if len(i) != 8:
+                return False
+        return True
+    return False
 
+
+#old
 
 def itemLocation(position, item):
     location = [2]
@@ -70,9 +82,7 @@ def isBlack(x):
 
 
 # Main: #
-
-root = Tree()
-root.position = [   [ 'br1' , 'bn1' , 'bb1' , 'bq' , 'bk' , 'bb2' , 'bn2' , 'br2'],
+p = [   [ 'br1' , 'bn1' , 'bb1' , 'bq' , 'bk' , 'bb2' , 'bn2' , 'br2'],
                     [ 'bp1' , 'bp2' , 'bp3' , 'bp4' , 'bp5' , 'bp6' , 'bp7' , 'bp8' ],
                     [ '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' ],
                     [ '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' ],
@@ -81,6 +91,10 @@ root.position = [   [ 'br1' , 'bn1' , 'bb1' , 'bq' , 'bk' , 'bb2' , 'bn2' , 'br2
                     [ 'wp1' , 'wp2' , 'wp3' , 'wp4' , 'wp5' , 'wp6' , 'wp7' , 'wp8' ],
                     [ 'wr1' , 'wn1' , 'wb1' , 'wq' , 'wk' , 'wb2' , 'wn2' , 'wr2' ]
                 ]
-root.NumPossibleMoves('white')
+
+root = Tree(p, 0)
+root.addChild(p)
+root.children[0].addChild(p)
+root.printAll()
 
 
