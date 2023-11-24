@@ -1,3 +1,4 @@
+from pathlib import Path
 
 class Tree:
     def __init__(self, data, layer):
@@ -94,7 +95,25 @@ p = [   [ 'br1' , 'bn1' , 'bb1' , 'bq' , 'bk' , 'bb2' , 'bn2' , 'br2'],
 
 root = Tree(p, 0)
 root.addChild(p)
+root.addChild(p)
+root.addChild(p)
+root.addChild(p)
+root.addChild(p)
+root.addChild(p)
 root.children[0].addChild(p)
+root.children[0].addChild(p)
+root.children[0].addChild(p)
+root.children[1].addChild(p)
+root.children[2].addChild(p)
+root.children[2].addChild(p)
+root.children[2].addChild(p)
+root.children[2].addChild(p)
+root.children[2].addChild(p)
+root.children[2].children[0].addChild(p)
+root.children[2].children[0].addChild(p)
+root.children[2].children[1].addChild(p)
+root.children[2].children[2].addChild(p)
+root.children[2].children[2].addChild(p)
 root.printAll()
 
 
