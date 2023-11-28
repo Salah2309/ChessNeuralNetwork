@@ -18,15 +18,12 @@
     width: 560px;
     overflow: hidden;
 }
-
 .files:nth-of-type(odd) .square:nth-of-type(even) {
     background-color: #769656;
 }
-
 .files:nth-of-type(even) .square:nth-of-type(odd) {
     background-color: #769656;
 }
-
 img {
     width: 100%;
 }

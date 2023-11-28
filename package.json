@@ -1,0 +1,8 @@
+{
+  "name": "chessneuralnetwork",
+  "version": "1.0.0",
+  "description": "A Neural Network that calculates every possible move by a player in a chess game, as well as every possible move made by the opponent. This is not limited to one move but rather every move in a game by both parties.",
+  "main": "runner.js",
+  "author": "Salah Alayoubi",
+  "license": "UNLICENSED"
+}

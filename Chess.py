@@ -93,6 +93,7 @@ p = [   [ 'br1' , 'bn1' , 'bb1' , 'bq' , 'bk' , 'bb2' , 'bn2' , 'br2'],
                     [ 'wr1' , 'wn1' , 'wb1' , 'wq' , 'wk' , 'wb2' , 'wn2' , 'wr2' ]
                 ]
 
+
 root = Tree(p, 0)
 root.addChild(p)
 root.addChild(p)

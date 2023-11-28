@@ -1,5 +1,3 @@
-// JavaScript function to assign images to squares
-
 let Layout;
 let result = [64];
 //Gets Layout
@@ -12,7 +10,6 @@ function fetchChessLayout(callback) {
       })
       .catch(error => console.error('Error fetching JSON:', error));
 }
-
 function assignImagesToSquares() {
     const squares = document.querySelectorAll('.square');   
     //2D array -> 1D array
@@ -37,5 +34,4 @@ function assignImagesToSquares() {
         
     });
 }
-
 document.addEventListener('DOMContentLoaded', () => {fetchChessLayout(assignImagesToSquares);});
