@@ -37,5 +37,5 @@ def getData():
            ["WR","WN","WB","WQ","WK","WB","WN","WR"]]   
 
 
-display(file)
-editJson(file, getData())
+#display(file)
+#editJson(file, getData())
