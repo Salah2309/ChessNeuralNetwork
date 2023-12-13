@@ -48,7 +48,7 @@ def Creater(Node, Turn):
     
     return
 
-x = Checker(root.data, "BK", 3, 3)
+x = Checker(root, "BP", 1, 1)
 
 
 #Creater(root, 'W')

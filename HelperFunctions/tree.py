@@ -1,10 +1,16 @@
 class MyTree:
     def __init__(self, data, parent, layer, check, turn):
+        #data: [8][8]
         self.data = data
+        #parent: MyTree()
         self.parent = parent
+        #check: True / False
         self.check = check
+        #turn: "W" / "B"
         self.turn = turn
+        #layer = number
         self.layer = layer
+        #children: [] of MyTree()
         self.children = []
 
     def addChild(self, data, check, turn):

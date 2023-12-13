@@ -1,7 +1,7 @@
-def Checker(data, type, y, x):
+def Checker(Node, piece, y, x):
     Ypos = []
     Xpos = []
-    
+
     #Helper Functions for Checker:
     def Rook(color):
         def ro(axis, postv):
@@ -11,7 +11,7 @@ def Checker(data, type, y, x):
                 #out of board
                 if temp < 0 or temp > 7:
                     break
-                s = data[temp][x] if axis == 'y' else data[y][temp]
+                s = Node.data[temp][x] if axis == 'y' else Node.data[y][temp]
                 if any(sub in s for sub in ["BR", "BN", "BB", "BQ", "BK", "BP"]):
                     if color == "W":
                         Ypos.append(temp) if axis == 'y' else Ypos.append(y)
@@ -31,7 +31,7 @@ def Checker(data, type, y, x):
     def Knight(color):
         def ni(ye, ex):
             if 0 <= ye <= 7 and 0 <= ex <= 7:
-                s = data[ye][ex]
+                s = Node.data[ye][ex]
                 if color == "W":
                     if not any(sub in s for sub in ["WR", "WN", "WB", "WQ", "WK", "WP"]):
                         Ypos.append(ye)
@@ -58,7 +58,7 @@ def Checker(data, type, y, x):
                 #out of board
                 if tY < 0 or tY > 7 or tX < 0 or tX > 7:
                     break
-                s = data[tY][tX]
+                s = Node.data[tY][tX]
                 if any(sub in s for sub in ["BR", "BN", "BB", "BQ", "BK", "BP"]):
                     if color == "W":
                         Ypos.append(tY)
@@ -78,7 +78,7 @@ def Checker(data, type, y, x):
     def King(color):
         def ki(ye, ex):
             if 0 <= ye <= 7 and 0 <= ex <= 7:
-                s = data[ye][ex]
+                s = Node.data[ye][ex]
                 if color == "W":
                     if not any(sub in s for sub in ["WR", "WN", "WB", "WQ", "WK", "WP"]):
                         Ypos.append(ye)
@@ -95,40 +95,67 @@ def Checker(data, type, y, x):
         ki(y-1, x+1)
         ki(y-1, x)
         ki(y-1, x-1)        
-    
+    def Pawn(color):
+        #Pos Moves: corner take, empeson
+        #One Up:
+        ye = y-1 if color == "W" else y+1
+        if 0 <= ye <= 7:
+            s = Node.data[ye][x]
+            if color == "W":
+                if not any(sub in s for sub in ["WR", "WN", "WB", "WQ", "WK", "WP"]):
+                    Ypos.append(ye)
+                    Xpos.append(x)
+            if color == "B": 
+                if not any(sub in s for sub in ["BR", "BN", "BB", "BQ", "BK", "BP"]):
+                    Ypos.append(ye)
+                    Xpos.append(x)
+        #Two Up:
+        if color == "W" and y == 6:
+            s = Node.data[y-2][x]
+            if not any(sub in s for sub in ["WR", "WN", "WB", "WQ", "WK", "WP"]):
+                Ypos.append(y-2)
+                Xpos.append(x)
+        if color == "B" and y == 1:
+            s = Node.data[y+2][x]
+            if not any(sub in s for sub in ["BR", "BN", "BB", "BQ", "BK", "BP"]):
+                Ypos.append(y+2)
+                Xpos.append(x)
+        
+
+
     #Main Functions
-    if type == "BR":
+    if piece == "BR":
         Rook("B")
-    elif type == "BN":
+    elif piece == "BN":
         Knight("B")
-    elif type == "BB":
+    elif piece == "BB":
        Bischop("B")
-    elif type == "BQ":
+    elif piece == "BQ":
         Rook("B")
         Bischop("B")
-    elif type == "BK":
+    elif piece == "BK":
         King("B")
-    elif type == "BP":
-        pass
+    elif piece == "BP":
+        Pawn("B")
     
     
-    elif type == "WR":
+    elif piece == "WR":
         Rook("W")
-    elif type == "WN": 
+    elif piece == "WN": 
         Knight("W")
-    elif type == "WB":
+    elif piece == "WB":
         Bischop("W")
-    elif type == "WQ":
+    elif piece == "WQ":
         Rook("W")
         Bischop("W")
-    elif type == "WK":
+    elif piece == "WK":
         King("W")
-    elif type == "WP":
-        pass
-    
-    
+    elif piece == "WP":
+        Pawn("W")
+
+
     else:
-        raise Exception("Wrong type passed to Checker()")
+        raise Exception("Wrong piece passed to Checker()")
     
     for i in range(len(Ypos)):
         print(Ypos[i], Xpos[i])
